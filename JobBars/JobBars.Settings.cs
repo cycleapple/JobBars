@@ -13,27 +13,27 @@ namespace JobBars {
         public static readonly Vector4 GREEN_COLOR = new( 0.36078431373f, 0.72156862745f, 0.36078431373f, 1.0f );
 
         private readonly InfoBox<JobBars> RequiresRestartInfoBox = new() {
-            Label = "Requires Restart",
+            Label = "需要重新啟動",
             ContentsAction = ( JobBars item ) => {
                 if( ImGui.Checkbox( "使用 4K 材質##JobBars_Settings", ref Configuration.Use4K ) ) {
                     Configuration.Save();
                 }
 
                 ImGui.SetNextItemWidth( 200f );
-                if( DrawCombo( ValidAttachTypes, Configuration.AttachAddon, "Gauge/Buff/Cursor UI element", "##JobBars_Settings", out var newAttach ) ) {
+                if( DrawCombo( ValidAttachTypes, Configuration.AttachAddon, "量譜／增益／游標的介面元件", "##JobBars_Settings", out var newAttach ) ) {
                     Configuration.AttachAddon = newAttach;
                     Configuration.Save();
                 }
 
                 ImGui.SetNextItemWidth( 200f );
-                if( DrawCombo( ValidAttachTypes, Configuration.CooldownAttachAddon, "Cooldown UI element", "##JobBars_Settings", out var newCDAttach ) ) {
+                if( DrawCombo( ValidAttachTypes, Configuration.CooldownAttachAddon, "冷卻時間的介面元件", "##JobBars_Settings", out var newCDAttach ) ) {
                     Configuration.CooldownAttachAddon = newCDAttach;
                     Configuration.Save();
                 }
             }
         };
 
-        private static readonly string Text = "Choosing UI elements will not work with plugins which hide them (such as Chat2 for Chatbox, DelvUI for PartyList). Also, when selecting PartyList for gauges, make sure to have \"Hide party list when solo\" turned off in Character Configuation > UI Settings > Party List.";
+        private static readonly string Text = "若其他插件隱藏了所選介面元件（例如 Chat2 隱藏聊天視窗、DelvUI 隱藏隊伍列表），此功能將無法運作。量譜選擇隊伍列表時，請確認已在角色設定 → 介面設定 → 隊伍列表中關閉「獨自一人時隱藏隊伍列表」。";
 
         protected static void DisplayWarning() {
             ImGui.PushStyleColor( ImGuiCol.Border, new Vector4( 1, 0, 0, 0.3f ) );
@@ -60,7 +60,7 @@ namespace JobBars {
 
             var _ID = "##JobBars_Settings";
             ImGui.SetNextWindowSize( new Vector2( 600, 1000 ), ImGuiCond.FirstUseEver );
-            if( ImGui.Begin( "JobBars Settings", ref Visible ) ) {
+            if( ImGui.Begin( "JobBars 設定###JobBars Settings", ref Visible ) ) {
                 RequiresRestartInfoBox.Draw( this );
 
                 DisplayWarning();

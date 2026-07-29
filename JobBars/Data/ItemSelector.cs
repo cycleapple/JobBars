@@ -22,7 +22,7 @@ namespace JobBars.Data {
             Data = new Item( ( ActionIds )0 )
         };
 
-        private string Text = "[NONE]";
+        private string Text = "[無]";
         private string SearchText = "";
 
         private List<ItemData> _Searched = null;
@@ -41,7 +41,7 @@ namespace JobBars.Data {
             var ret = false;
             if( ImGui.BeginCombo( Id, Text, ImGuiComboFlags.HeightLargest ) ) {
                 var resetScroll = false;
-                if( ImGui.InputText( $"Search{Id}", ref SearchText, 100 ) ) {
+                if( ImGui.InputText( $"搜尋{Id}", ref SearchText, 100 ) ) {
                     _Searched = SearchText.Length == 0 ? null : Data.Where( x => x.Name.Contains( SearchText, StringComparison.CurrentCultureIgnoreCase ) ).ToList();
                     resetScroll = true;
                 }
@@ -77,7 +77,7 @@ namespace JobBars.Data {
                         ImGui.SameLine();
                     }
 
-                    if( ImGui.Button( "Select" + Id ) ) {
+                    if( ImGui.Button( "選擇" + Id ) ) {
                         Selected = SearchSelected;
                         Text = Selected.Name;
                         ret = true;

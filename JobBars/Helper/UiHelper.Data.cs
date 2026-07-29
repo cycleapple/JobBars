@@ -89,7 +89,7 @@ namespace JobBars.Helper {
             ClientLanguage.English => "Procs",
             ClientLanguage.German => "Procs",
             ClientLanguage.French => "Procs",
-            _ => "触发"
+            _ => "觸發效果"
         };
 
         public static string Localize( ActionIds action ) => Localize( new Item( action ) );

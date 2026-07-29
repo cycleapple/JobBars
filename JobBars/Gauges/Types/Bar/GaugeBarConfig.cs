@@ -11,17 +11,17 @@ namespace JobBars.Gauges.Types.Bar {
         }
 
         public override void Draw( string id, ref bool newVisual, ref bool reset ) {
-            if( JobBars.Configuration.GaugeShowText.Draw( $"Show text{id}", Name, ShowText, out var newShowText ) ) {
+            if( JobBars.Configuration.GaugeShowText.Draw( $"顯示文字{id}", Name, ShowText, out var newShowText ) ) {
                 ShowText = newShowText;
                 newVisual = true;
             }
 
-            if( JobBars.Configuration.GaugeSwapText.Draw( $"Swap text position{id}", Name, SwapText, out var newSwapText ) ) {
+            if( JobBars.Configuration.GaugeSwapText.Draw( $"交換文字位置{id}", Name, SwapText, out var newSwapText ) ) {
                 SwapText = newSwapText;
                 newVisual = true;
             }
 
-            if( JobBars.Configuration.GaugeVertical.Draw( $"Vertical{id}", Name, Vertical, out var newVertical ) ) {
+            if( JobBars.Configuration.GaugeVertical.Draw( $"垂直顯示{id}", Name, Vertical, out var newVertical ) ) {
                 Vertical = newVertical;
                 newVisual = true;
             }

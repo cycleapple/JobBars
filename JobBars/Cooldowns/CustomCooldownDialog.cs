@@ -19,14 +19,14 @@ namespace JobBars.Cooldowns {
         private float CustomCD = 30;
         private float CustomDuration = 0;
 
-        private readonly ItemSelector CustomTriggerAction = new( "Trigger", "##CustomCD_Action", UiHelper.ActionList );
-        private readonly ItemSelector CustomTriggerBuff = new( "Trigger", "##CustomCD_Buff", UiHelper.StatusList );
-        private readonly ItemSelector CustomIcon = new( "Icon", "##CustomCD_Icon", UiHelper.ActionList );
+        private readonly ItemSelector CustomTriggerAction = new( "觸發條件", "##CustomCD_Action", UiHelper.ActionList );
+        private readonly ItemSelector CustomTriggerBuff = new( "觸發條件", "##CustomCD_Buff", UiHelper.StatusList );
+        private readonly ItemSelector CustomIcon = new( "圖示", "##CustomCD_Icon", UiHelper.ActionList );
 
         private static CooldownManager Manager => JobBars.CooldownManager;
 
 
-        public CustomCooldownDialog() : base( "Custom Cooldown" ) { }
+        public CustomCooldownDialog() : base( "自訂冷卻###Custom Cooldown" ) { }
 
         public override void DrawBody() {
             var id = "##CustomCooldown";
@@ -34,25 +34,25 @@ namespace JobBars.Cooldowns {
 
             ImGui.BeginChild( id + "/Child", new Vector2( 0, -footerHeight ), true );
 
-            if( JobBars.DrawCombo( JobOptions, SelectedJob, "Job", id, out var newSelectedJob ) ) {
+            if( JobBars.DrawCombo( JobOptions, SelectedJob, "職業", id, out var newSelectedJob ) ) {
                 SelectedJob = newSelectedJob;
             }
 
             if( ImGui.BeginCombo( "##CustomCD_Type", $"{CustomTriggerType}", ImGuiComboFlags.HeightLargest ) ) {
-                if( ImGui.Selectable( "Action", CustomTriggerType == CustomCooldownType.Action ) ) CustomTriggerType = CustomCooldownType.Action;
-                if( ImGui.Selectable( "Buff", CustomTriggerType == CustomCooldownType.Buff ) ) CustomTriggerType = CustomCooldownType.Buff;
+                if( ImGui.Selectable( "技能###Action", CustomTriggerType == CustomCooldownType.Action ) ) CustomTriggerType = CustomCooldownType.Action;
+                if( ImGui.Selectable( "增益狀態###Buff", CustomTriggerType == CustomCooldownType.Buff ) ) CustomTriggerType = CustomCooldownType.Buff;
                 ImGui.EndCombo();
             }
             ImGui.SameLine();
-            ImGui.Text( "Trigger Type" );
+            ImGui.Text( "觸發類型" );
 
             if( CustomTriggerType == CustomCooldownType.Action ) CustomTriggerAction.Draw();
             else CustomTriggerBuff.Draw();
 
             CustomIcon.Draw();
 
-            ImGui.InputFloat( $"Cooldown", ref CustomCD );
-            ImGui.InputFloat( $"Duration (0 = instant)", ref CustomDuration );
+            ImGui.InputFloat( "冷卻時間###Cooldown", ref CustomCD );
+            ImGui.InputFloat( "持續時間（0 = 立即）###Duration (0 = instant)", ref CustomDuration );
 
             var selected = CustomTriggerType == CustomCooldownType.Action ? CustomTriggerAction.GetSelected() : CustomTriggerBuff.GetSelected();
             var icon = CustomIcon.GetSelected();
@@ -60,7 +60,7 @@ namespace JobBars.Cooldowns {
             ImGui.EndChild();
 
             if( icon.Data.Id != 0 && selected.Data.Id != 0 ) {
-                if( ImGui.Button( "+ Add" ) ) {
+                if( ImGui.Button( "+ 新增###+ Add" ) ) {
                     var newName = $"{selected.Name} - Custom ({UiHelper.Localize( SelectedJob )})";
                     var newProps = new CooldownProps {
                         CD = CustomCD,
@@ -74,7 +74,7 @@ namespace JobBars.Cooldowns {
             }
             else {
                 ImGui.PushStyleVar( ImGuiStyleVar.Alpha, 0.5f );
-                ImGui.Button( "+ Add" );
+                ImGui.Button( "+ 新增###+ Add" );
                 ImGui.PopStyleVar();
             }
         }

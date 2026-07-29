@@ -30,19 +30,19 @@ namespace JobBars.Gauges.Stacks {
         public override GaugeTracker GetTracker( int idx ) => new GaugeStacksTracker( this, idx );
 
         protected override void DrawConfig( string id, ref bool newVisual, ref bool reset ) {
-            if( JobBars.Configuration.GaugeColor.Draw( $"Color{id}", Name, Color, out var newColor ) ) {
+            if( JobBars.Configuration.GaugeColor.Draw( $"顏色{id}", Name, Color, out var newColor ) ) {
                 Color = newColor;
                 newVisual = true;
             }
 
-            if( JobBars.Configuration.GaugeCompletionSound.Draw( $"Completion sound{id}", Name, ValidSoundType, CompletionSound, out var newCompletionSound ) ) {
+            if( JobBars.Configuration.GaugeCompletionSound.Draw( $"完成音效{id}", Name, ValidSoundType, CompletionSound, out var newCompletionSound ) ) {
                 CompletionSound = newCompletionSound;
             }
 
             DrawCompletionSoundEffect();
-            DrawSoundEffect( "Change sound effect" );
+            DrawSoundEffect( "變更音效" );
 
-            if( JobBars.Configuration.GaugeReverseFill.Draw( $"Reverse tick fill order{id}", Name, ReverseFill, out var newReverseFill ) ) {
+            if( JobBars.Configuration.GaugeReverseFill.Draw( $"反轉刻度填充順序{id}", Name, ReverseFill, out var newReverseFill ) ) {
                 ReverseFill = newReverseFill;
                 newVisual = true;
             }
