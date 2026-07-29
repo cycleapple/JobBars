@@ -16,7 +16,7 @@ namespace JobBars.Data {
 
         protected override void DrawRightColumn() {
             if( SelectedJob == JobIds.OTHER ) {
-                ImGui.Text( "Select a job..." );
+                ImGui.Text( "請選擇職業……" );
             }
             else {
                 ImGui.BeginChild( Id + "Selected" );

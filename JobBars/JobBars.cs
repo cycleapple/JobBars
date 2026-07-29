@@ -171,7 +171,7 @@ namespace JobBars {
 
         private void SetupCommands() {
             Dalamud.CommandManager.AddHandler( "/jobbars", new CommandInfo( OnCommand ) {
-                HelpMessage = $"Open config window for VFXEditor",
+                HelpMessage = "開啟 JobBars 設定視窗",
                 ShowInHelp = true
             } );
         }

@@ -15,7 +15,7 @@ namespace JobBars {
         private readonly InfoBox<JobBars> RequiresRestartInfoBox = new() {
             Label = "Requires Restart",
             ContentsAction = ( JobBars item ) => {
-                if( ImGui.Checkbox( "Use 4K textures##JobBars_Settings", ref Configuration.Use4K ) ) {
+                if( ImGui.Checkbox( "使用 4K 材質##JobBars_Settings", ref Configuration.Use4K ) ) {
                     Configuration.Save();
                 }
 
@@ -70,27 +70,27 @@ namespace JobBars {
                 // ==========================
 
                 ImGui.BeginTabBar( "Tabs" + _ID );
-                if( ImGui.BeginTabItem( "Gauges" + _ID ) ) {
+                if( ImGui.BeginTabItem( "量譜" + _ID ) ) {
                     GaugeManager?.Draw();
                     ImGui.EndTabItem();
                 }
 
-                if( ImGui.BeginTabItem( "Icons" + _ID ) ) {
+                if( ImGui.BeginTabItem( "圖示" + _ID ) ) {
                     IconManager?.Draw();
                     ImGui.EndTabItem();
                 }
 
-                if( ImGui.BeginTabItem( "Buffs" + _ID ) ) {
+                if( ImGui.BeginTabItem( "增益狀態" + _ID ) ) {
                     BuffManager?.Draw();
                     ImGui.EndTabItem();
                 }
 
-                if( ImGui.BeginTabItem( "Cooldowns" + _ID ) ) {
+                if( ImGui.BeginTabItem( "冷卻時間" + _ID ) ) {
                     CooldownManager?.Draw();
                     ImGui.EndTabItem();
                 }
 
-                if( ImGui.BeginTabItem( "Cursor" + _ID ) ) {
+                if( ImGui.BeginTabItem( "游標" + _ID ) ) {
                     CursorManager?.Draw();
                     ImGui.EndTabItem();
                 }

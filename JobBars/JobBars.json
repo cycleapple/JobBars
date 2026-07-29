@@ -1,12 +1,12 @@
 {
     "Author": "ocealot",
     "Name": "JobBars",
-    "Punchline": "Extra job gauges",
-    "Description": "Additional job gauges, party buff timers, mitigation trackers, and more. Icon by PAPACHIN",
+    "Punchline": "額外的職業量譜",
+    "Description": "提供額外的職業量譜、隊伍增益計時器、減傷追蹤等功能。圖示由 PAPACHIN 製作。",
     "InternalName": "JobBars",
-    "AssemblyVersion": "1.3.2.1",
-    "Tags": [ "UI", "Bars" ],
-    "RepoUrl": "https://github.com/0ceal0t/JobBars",
+    "AssemblyVersion": "1.3.2.2",
+    "Tags": [ "介面", "量譜" ],
+    "RepoUrl": "https://github.com/cycleapple/JobBars",
     "DalamudApiLevel": 13,
     "ApplicableVersion": "any"
 }

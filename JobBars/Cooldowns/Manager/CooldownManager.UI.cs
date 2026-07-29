@@ -6,7 +6,7 @@ namespace JobBars.Cooldowns.Manager {
         private readonly InfoBox<CooldownManager> PositionInfoBox = new() {
             Label = "Position",
             ContentsAction = ( CooldownManager manager ) => {
-                if( ImGui.Checkbox( "Left-aligned" + manager.Id, ref JobBars.Configuration.CooldownsLeftAligned ) ) {
+                if( ImGui.Checkbox( "靠左對齊" + manager.Id, ref JobBars.Configuration.CooldownsLeftAligned ) ) {
                     JobBars.Configuration.Save();
                     manager.ResetUi();
                 }
@@ -31,18 +31,18 @@ namespace JobBars.Cooldowns.Manager {
         private readonly InfoBox<CooldownManager> ShowIconInfoBox = new() {
             Label = "Show Icons When",
             ContentsAction = ( CooldownManager manager ) => {
-                if( ImGui.Checkbox( "Default" + manager.Id, ref JobBars.Configuration.CooldownsStateShowDefault ) ) JobBars.Configuration.Save();
-                if( ImGui.Checkbox( "Active" + manager.Id, ref JobBars.Configuration.CooldownsStateShowRunning ) ) JobBars.Configuration.Save();
-                if( ImGui.Checkbox( "On cooldown" + manager.Id, ref JobBars.Configuration.CooldownsStateShowOnCD ) ) JobBars.Configuration.Save();
-                if( ImGui.Checkbox( "Off cooldown" + manager.Id, ref JobBars.Configuration.CooldownsStateShowOffCD ) ) JobBars.Configuration.Save();
+                if( ImGui.Checkbox( "預設" + manager.Id, ref JobBars.Configuration.CooldownsStateShowDefault ) ) JobBars.Configuration.Save();
+                if( ImGui.Checkbox( "作用中" + manager.Id, ref JobBars.Configuration.CooldownsStateShowRunning ) ) JobBars.Configuration.Save();
+                if( ImGui.Checkbox( "冷卻中" + manager.Id, ref JobBars.Configuration.CooldownsStateShowOnCD ) ) JobBars.Configuration.Save();
+                if( ImGui.Checkbox( "可使用" + manager.Id, ref JobBars.Configuration.CooldownsStateShowOffCD ) ) JobBars.Configuration.Save();
             }
         };
 
         private readonly InfoBox<CooldownManager> HideWhenInfoBox = new() {
             Label = "Hide When",
             ContentsAction = ( CooldownManager manager ) => {
-                if( ImGui.Checkbox( "Out of combat", ref JobBars.Configuration.CooldownsHideOutOfCombat ) ) JobBars.Configuration.Save();
-                if( ImGui.Checkbox( "Weapon sheathed", ref JobBars.Configuration.CooldownsHideWeaponSheathed ) ) JobBars.Configuration.Save();
+                if( ImGui.Checkbox( "非戰鬥中", ref JobBars.Configuration.CooldownsHideOutOfCombat ) ) JobBars.Configuration.Save();
+                if( ImGui.Checkbox( "收起武器時", ref JobBars.Configuration.CooldownsHideWeaponSheathed ) ) JobBars.Configuration.Save();
             }
         };
 
@@ -51,7 +51,7 @@ namespace JobBars.Cooldowns.Manager {
         protected override void DrawHeader() {
             CustomCooldownDialog.Draw();
 
-            if( ImGui.Checkbox( "Cooldowns enabled" + Id, ref JobBars.Configuration.CooldownsEnabled ) ) {
+            if( ImGui.Checkbox( "啟用冷卻時間" + Id, ref JobBars.Configuration.CooldownsEnabled ) ) {
                 JobBars.Configuration.Save();
                 ResetUi();
             }
@@ -62,9 +62,9 @@ namespace JobBars.Cooldowns.Manager {
             ShowIconInfoBox.Draw( this );
             HideWhenInfoBox.Draw( this );
 
-            if( ImGui.Checkbox( "Hide active buff text" + Id, ref JobBars.Configuration.CooldownsHideActiveBuffDuration ) ) JobBars.Configuration.Save();
+            if( ImGui.Checkbox( "隱藏作用中增益的文字" + Id, ref JobBars.Configuration.CooldownsHideActiveBuffDuration ) ) JobBars.Configuration.Save();
 
-            if( ImGui.Checkbox( "Show party members' cooldowns" + Id, ref JobBars.Configuration.CooldownsShowPartyMembers ) ) {
+            if( ImGui.Checkbox( "顯示隊員的冷卻時間" + Id, ref JobBars.Configuration.CooldownsShowPartyMembers ) ) {
                 JobBars.Configuration.Save();
                 ResetUi();
             }
@@ -89,7 +89,7 @@ namespace JobBars.Cooldowns.Manager {
             }
 
             ImGui.SetCursorPosY( ImGui.GetCursorPosY() + 10 );
-            if( ImGui.Button( $"+ Add Custom Cooldown{Id}" ) ) CustomCooldownDialog.Show( job );
+            if( ImGui.Button( $"+ 新增自訂冷卻{Id}" ) ) CustomCooldownDialog.Show( job );
 
             if( reset ) ResetUi();
         }

@@ -10,7 +10,7 @@ namespace JobBars.Buffs.Manager {
         private readonly InfoBox<BuffManager> PositionInfoBox = new() {
             Label = "Position",
             ContentsAction = ( BuffManager manager ) => {
-                ImGui.Checkbox( "Position Locked" + manager.Id, ref manager.LOCKED );
+                ImGui.Checkbox( "鎖定位置" + manager.Id, ref manager.LOCKED );
 
                 ImGui.SetNextItemWidth( 25f );
                 if( ImGui.InputInt( "Buffs per line" + manager.Id, ref JobBars.Configuration.BuffHorizontal, 0 ) ) {
@@ -18,17 +18,17 @@ namespace JobBars.Buffs.Manager {
                     JobBars.NodeBuilder.BuffRoot.Update();
                 }
 
-                if( ImGui.Checkbox( "Right-to-left" + manager.Id, ref JobBars.Configuration.BuffRightToLeft ) ) {
+                if( ImGui.Checkbox( "由右至左" + manager.Id, ref JobBars.Configuration.BuffRightToLeft ) ) {
                     JobBars.Configuration.Save();
                     JobBars.NodeBuilder.BuffRoot.Update();
                 }
 
-                if( ImGui.Checkbox( "Bottom-to-top" + manager.Id, ref JobBars.Configuration.BuffBottomToTop ) ) {
+                if( ImGui.Checkbox( "由下至上" + manager.Id, ref JobBars.Configuration.BuffBottomToTop ) ) {
                     JobBars.Configuration.Save();
                     JobBars.NodeBuilder.BuffRoot.Update();
                 }
 
-                if( ImGui.Checkbox( "Square buffs" + manager.Id, ref JobBars.Configuration.BuffSquare ) ) {
+                if( ImGui.Checkbox( "正方形增益圖示" + manager.Id, ref JobBars.Configuration.BuffSquare ) ) {
                     JobBars.Configuration.Save();
                     JobBars.NodeBuilder.BuffRoot.Update();
                 }
@@ -48,13 +48,13 @@ namespace JobBars.Buffs.Manager {
         private readonly InfoBox<BuffManager> HideWhenInfoBox = new() {
             Label = "Hide When",
             ContentsAction = ( BuffManager manager ) => {
-                if( ImGui.Checkbox( "Out of combat", ref JobBars.Configuration.BuffHideOutOfCombat ) ) JobBars.Configuration.Save();
-                if( ImGui.Checkbox( "Weapon is sheathed", ref JobBars.Configuration.BuffHideWeaponSheathed ) ) JobBars.Configuration.Save();
+                if( ImGui.Checkbox( "非戰鬥中", ref JobBars.Configuration.BuffHideOutOfCombat ) ) JobBars.Configuration.Save();
+                if( ImGui.Checkbox( "收起武器時", ref JobBars.Configuration.BuffHideWeaponSheathed ) ) JobBars.Configuration.Save();
             }
         };
 
         protected override void DrawHeader() {
-            if( ImGui.Checkbox( "Buff bar enabled" + Id, ref JobBars.Configuration.BuffBarEnabled ) ) {
+            if( ImGui.Checkbox( "啟用增益列" + Id, ref JobBars.Configuration.BuffBarEnabled ) ) {
                 JobBars.Configuration.Save();
                 ResetUi();
             }
@@ -67,12 +67,12 @@ namespace JobBars.Buffs.Manager {
             ImGui.SetNextItemWidth( 50f );
             if( ImGui.InputFloat( "Hide buffs with cooldown above" + Id, ref JobBars.Configuration.BuffDisplayTimer ) ) JobBars.Configuration.Save();
 
-            if( ImGui.Checkbox( "Show party members' buffs", ref JobBars.Configuration.BuffIncludeParty ) ) {
+            if( ImGui.Checkbox( "顯示隊員的增益狀態", ref JobBars.Configuration.BuffIncludeParty ) ) {
                 JobBars.Configuration.Save();
                 ResetUi();
             }
 
-            if( ImGui.Checkbox( "Thin buff border", ref JobBars.Configuration.BuffThinBorder ) ) {
+            if( ImGui.Checkbox( "使用細增益邊框", ref JobBars.Configuration.BuffThinBorder ) ) {
                 JobBars.Configuration.Save();
                 JobBars.NodeBuilder.BuffRoot.Update();
             }

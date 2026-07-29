@@ -35,7 +35,7 @@ namespace JobBars.Data {
 
         protected override void DrawRightColumn() {
             if( SettingsItemSelected == null ) {
-                ImGui.Text( "Select an item..." );
+                ImGui.Text( "請選擇項目……" );
             }
             else {
                 ImGui.BeginChild( Id + "Selected" );

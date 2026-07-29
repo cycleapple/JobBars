@@ -13,20 +13,20 @@ namespace JobBars.Gauges.Manager {
         private readonly InfoBox<GaugeManager> PositionInfoBox = new() {
             Label = "Position",
             ContentsAction = ( GaugeManager manager ) => {
-                ImGui.Checkbox( "Position locked" + manager.Id, ref manager.LOCKED );
+                ImGui.Checkbox( "鎖定位置" + manager.Id, ref manager.LOCKED );
 
                 if( JobBars.Configuration.GaugePositionType != GaugePositionType.Split ) {
-                    if( ImGui.Checkbox( "Horizontal gauges", ref JobBars.Configuration.GaugeHorizontal ) ) {
+                    if( ImGui.Checkbox( "水平量譜", ref JobBars.Configuration.GaugeHorizontal ) ) {
                         manager.UpdatePositionScale();
                         JobBars.Configuration.Save();
                     }
 
-                    if( ImGui.Checkbox( "Bottom-to-top", ref JobBars.Configuration.GaugeBottomToTop ) ) {
+                    if( ImGui.Checkbox( "由下至上", ref JobBars.Configuration.GaugeBottomToTop ) ) {
                         manager.UpdatePositionScale();
                         JobBars.Configuration.Save();
                     }
 
-                    if( ImGui.Checkbox( "Align right", ref JobBars.Configuration.GaugeAlignRight ) ) {
+                    if( ImGui.Checkbox( "靠右對齊", ref JobBars.Configuration.GaugeAlignRight ) ) {
                         manager.UpdatePositionScale();
                         JobBars.Configuration.Save();
                     }
@@ -62,13 +62,13 @@ namespace JobBars.Gauges.Manager {
         private readonly InfoBox<GaugeManager> HideWhenInfoBox = new() {
             Label = "Hide When",
             ContentsAction = ( GaugeManager manager ) => {
-                if( ImGui.Checkbox( "Out of combat", ref JobBars.Configuration.GaugesHideOutOfCombat ) ) JobBars.Configuration.Save();
-                if( ImGui.Checkbox( "Weapon sheathed", ref JobBars.Configuration.GaugesHideWeaponSheathed ) ) JobBars.Configuration.Save();
+                if( ImGui.Checkbox( "非戰鬥中", ref JobBars.Configuration.GaugesHideOutOfCombat ) ) JobBars.Configuration.Save();
+                if( ImGui.Checkbox( "收起武器時", ref JobBars.Configuration.GaugesHideWeaponSheathed ) ) JobBars.Configuration.Save();
             }
         };
 
         protected override void DrawHeader() {
-            if( ImGui.Checkbox( "Gauges Enabled" + Id, ref JobBars.Configuration.GaugesEnabled ) ) {
+            if( ImGui.Checkbox( "啟用量譜" + Id, ref JobBars.Configuration.GaugesEnabled ) ) {
                 JobBars.Configuration.Save();
             }
         }
@@ -77,7 +77,7 @@ namespace JobBars.Gauges.Manager {
             PositionInfoBox.Draw( this );
             HideWhenInfoBox.Draw( this );
 
-            if( ImGui.Checkbox( "Pulse diamond and arrow color", ref JobBars.Configuration.GaugePulse ) ) JobBars.Configuration.Save();
+            if( ImGui.Checkbox( "菱形與箭頭顏色脈動", ref JobBars.Configuration.GaugePulse ) ) JobBars.Configuration.Save();
 
             ImGui.SetNextItemWidth( 50f );
             if( ImGui.InputFloat( "Slidecast seconds (0 = off)", ref JobBars.Configuration.GaugeSlidecastTime ) ) JobBars.Configuration.Save();
