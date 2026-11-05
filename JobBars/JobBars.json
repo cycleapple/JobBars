@@ -7,6 +7,6 @@
     "AssemblyVersion": "1.3.2.3",
     "Tags": [ "介面", "量譜" ],
     "RepoUrl": "https://github.com/cycleapple/JobBars",
-    "DalamudApiLevel": 13,
+    "DalamudApiLevel": 14,
     "ApplicableVersion": "any"
 }

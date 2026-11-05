@@ -3,7 +3,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using JobBars.Data;
 using System.Collections.Generic;
 using System.Linq;
-using DalamudStatus = Dalamud.Game.ClientState.Statuses.Status;
+using DalamudStatus = Dalamud.Game.ClientState.Statuses.IStatus;
 
 namespace JobBars.Helper {
     public unsafe partial class UiHelper {

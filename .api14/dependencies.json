@@ -1,0 +1,8 @@
+[
+  {
+    "path": "KamiToolKit",
+    "baseCommit": "a97cbe3551083acfebada0e01b7e89e5b17fbd02",
+    "patch": "patches/12ca56efda7ccaee.patch",
+    "sha256": "8fe3b9044acb365d12cc4078cb48dfac8d9a61eae7d6e280e6abd4826d879575"
+  }
+]
